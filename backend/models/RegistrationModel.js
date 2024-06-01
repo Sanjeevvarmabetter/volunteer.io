@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const registrationSchema = new Schema({
     event_id: {
-        type: Number,
+        type: Object,
         required: true,
         min: 3,
         unique: true
