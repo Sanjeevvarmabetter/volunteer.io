@@ -1,18 +1,18 @@
-import express from 'express';
-import { createEvent, getAllEvents, getSpecificEvent, deleteEvent } from '../controllers/eventController.js';
+const express = require('express');
+const { createEvent,getallevents,getspecificEvent,deleteEvent } = require('../controllers/eventController');
+
 
 const router = express.Router();
 
-// Create Event
-router.post('/events', createEvent);
+// all routes
 
-// Get all events
-router.get('/events', getAllEvents);
+router.post('/events',createEvent); //add protction
+router.get('/events',getallevents);
+router.get('/events/:id',getspecificEvent);
 
-// Get specific event by ID
-router.get('/events/:id', getSpecificEvent);
+// write update also
 
-// Delete event
-router.delete('/events/:id', deleteEvent);
+router.delete('/events/:id',deleteEvent); //add protection
 
-export default router;
+
+module.exports = router;

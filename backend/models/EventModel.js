@@ -20,7 +20,7 @@ const userschema = new mongoose.Schema({
         default:""
     },
     datetime: {
-        type:Date,
+        type:datatime,
         default:""
     },
     organized_name: {
