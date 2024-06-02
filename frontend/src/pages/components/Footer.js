@@ -1,9 +1,10 @@
 import React from 'react'
-
+import copyright from '../assests/copyright.svg'
 const Footer = () => {
   return (
     <footer className='text-center footer'>
-        2024 VolunTrove.All rights reserved.<br/><hr/></footer>
+        <p>2024 VolunTrove.All rights reserved.</p>
+        <hr/></footer>
   )
 }
 

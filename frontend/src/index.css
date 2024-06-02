@@ -96,9 +96,6 @@ span a {
   font-size: 3rem;
 }
 
-.home_page span {
-  /* color: rgba(0, 212, 255, 1); */
-}
 
 .home_page button {
   background-color: rgb(27, 73, 83);
@@ -109,10 +106,6 @@ span a {
   border-radius: 2rem;
   transition: ease-in 0.3s;
   border: none;
-}
-
-.home_page button:hover {
-  /* background-color: rgba(0, 212, 255, 1); */
 }
 
 
@@ -147,12 +140,8 @@ span a {
   height: 100vh;
   width: 100vw;
   background: #FFEFBA;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #FFFFFF, #FFEFBA);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 }
 
 .form_containers {
@@ -207,29 +196,41 @@ span a {
 }
 
 
-.ChatApp {
-  text-align: center;
-  margin: 20px;
-}
 
-.chat-box {
-  border: 1px solid #ccc;
-  padding: 10px;
-  height: 300px;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-}
-
-.footer{
+.footer {
   padding: 20px 40px;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  /* bottom: 0;
+  left: 0; */
   width: 100%;
   color: #fff;
   background-color: #001896;
   font-size: larger;
-  hr{
+
+  hr {
     margin-top: 20px;
   }
+}
+
+.homeMain {
+  background: #FFEFBA;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+}
+
+body {
+  font-family: var(--font-cormorant_garamond), serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-libre_franklin), sans-serif;
+}
+
+table{
+  margin-top: 30px;
 }

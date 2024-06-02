@@ -15,10 +15,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Your password is required"],
   },
-  
+
   phoneNumber: {
     type: String,
     required: [true, "Your phonenumber is required"],
+  },
+
+  role: {
+    type: String,
+    required: true,
+    enum: ['volunter', 'organizer']
   },
 
   createdAt: {

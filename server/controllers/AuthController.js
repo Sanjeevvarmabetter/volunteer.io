@@ -6,13 +6,13 @@ module.exports.Signup = async (req, res, next) => {
     try {
         console.log(req.body)
         // const { email, username, password, fullname, studentID, phoneNumber, createdAt } = req.body;
-        const { email, username, password, phoneNumber, createdAt } = req.body;
+        const { email, username, password, phoneNumber, role, createdAt } = req.body;
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.json({ message: "User already exists" });
         }
         // const user = await User.create({ email, username, password, createdAt });
-        const user = await User.create({ email, username, password, phoneNumber, createdAt });
+        const user = await User.create({ email, username, password, phoneNumber, role, createdAt });
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,

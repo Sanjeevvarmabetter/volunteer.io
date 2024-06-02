@@ -17,6 +17,8 @@ import userRoutes from './routes/user.js';
 import registrationRoutes from './routes/registration.js';
 >>>>>>> 5215623d10418a3c7d12c8f81d60d7c00b35428a
 
+
+const r = require('./routes/auth.js')
 const app = express();
 connectToDB();
 app.use(express.json());

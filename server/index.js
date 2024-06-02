@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
 
 const authRoute = require("./routes/AuthRoute");
-
+const userRoute = require("./routes/UserRoute");
 const { MONGO_URI, PORT } = process.env;
 
 mongoose
@@ -30,6 +30,8 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.use("/", authRoute);
+
+app.use("/user",userRoute);
 
 app.listen(PORT, ()=> {
     console.log(`Server lsitening on Port ${PORT}`)
