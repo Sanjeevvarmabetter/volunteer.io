@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
-
+import { ChakraProvider } from '@chakra-ui/react';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 

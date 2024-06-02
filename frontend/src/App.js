@@ -3,7 +3,7 @@ import { Login, Signup } from "./pages";
 import Home from "./pages/Home";
 import NotFound from "./pages/components/NotFound";
 import Profile from "./pages/Profile";
-import Home2 from "./pages/Home2";
+import Dash from "./pages/Home2";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home" element={<Home2 />} />
+        <Route path="/home" element={<Dash />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

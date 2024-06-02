@@ -83,6 +83,7 @@ const Home = () => {
         </div>
       )}
       <ToastContainer />
+      {/* <Card /> */}
       <Footer />
     </div>
   );
