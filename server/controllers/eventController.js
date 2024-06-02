@@ -1,5 +1,5 @@
-import Event from '../models/EventModel.js';
-import Registration from '../models/RegistrationModel.js';
+const  Event = require('../models/EventModel.js');
+const Registration = require ('../models/RegistrationModel.js');
 
 // Create Event
 export const createEvent = async (req, res) => {

@@ -78,40 +78,23 @@ function Dash() {
         <h1 className="text-3xl text-green-600 mb-4 uppercase">WELCOME {userData.role}.</h1>
         <div className="flex items-center justify-between">
           <div className="flex space-x-2">
-            <select className="border border-gray-300 p-2 rounded" onChange={handleCategoryChange}>
-              <option value="">Category</option>
-              <option value="Environment">Environment</option>
-              <option value="Health">Health</option>
-              <option value="Education">Education</option>
-              <option value="Community">Community</option>
-              <option value="Animal Welfare">Animal Welfare</option>
-              <option value="Sports">Sports</option>
-              <option value="Arts & Culture">Arts & Culture</option>
-            </select>
+            
             <select className="border border-gray-300 p-2 rounded" onChange={handlePlaceChange}>
               <option value="">Place</option>
-              <option value="California">California</option>
-              <option value="Texas">Texas</option>
-              <option value="New York">New York</option>
-              <option value="Florida">Florida</option>
-              <option value="Illinois">Illinois</option>
+              <option value="Visakhapatnam">Visakhapatnam</option>
+              <option value="Kakinada">Kakinada</option>
+              <option value="Guntur">Guntur</option>
+              <option value="Vijayawada">Vijayawada</option>
+              <option value="Tirupati">Tirupati</option>
+              <option value="Anantapur">Anantapur</option>
+              <option value="Kadapa">Kadapa</option>
             </select>
           </div>
         </div>
       </div>
       <div className="container mx-auto mt-6 px-4">
-        <h2 className="text-2xl text-green-600 mb-4">Awareness campaign</h2>
+        <h2 className="text-2xl text-green-600 mb-4">Awareness Campaigns</h2>
         <VolunteerCampaigns category={category} place={place} />
-      </div>
-      <div className="container mx-auto mt-6 px-4">
-        <div className="bg-white p-6 rounded shadow">
-          <div className="flex items-center space-x-4">
-            <BellIcon className="w-6 h-6 text-gray-700" />
-            <StarIcon className="w-6 h-6 text-red-500" />
-          </div>
-          <h2 className="text-xl my-4">Welcome to Our Service</h2>
-          <p>Explore the opportunities and make a difference through volunteering.</p>
-        </div>
       </div>
       <Footer />
     </div>

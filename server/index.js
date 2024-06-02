@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 
 const authRoute = require("./routes/AuthRoute");
 const userRoute = require("./routes/UserRoute");
+const eventRoute = require("./routes/event")
+const resgisterRoute = require("./routes/registration")
 const { MONGO_URI, PORT } = process.env;
 
 mongoose
@@ -32,6 +34,10 @@ app.use(bodyParser.json());
 app.use("/", authRoute);
 
 app.use("/user",userRoute);
+
+app.use("/event", eventRoute);
+
+app.use("/registeration", resgisterRoute);
 
 app.listen(PORT, ()=> {
     console.log(`Server lsitening on Port ${PORT}`)
