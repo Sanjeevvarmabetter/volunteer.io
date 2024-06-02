@@ -11,16 +11,24 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
+    category: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: true
     },
-    location: {
+    image: {
+        type: String,
+        required: true
+    },
+    place: {
         type: String,
         default: ""
     },
     datetime: {
-        type: Date,
+        type: String,
         default: ""
     },
     organized_name: {
