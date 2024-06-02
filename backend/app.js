@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import  express from 'express';
 // const cookieParser = require('cookie-parser');
 import connectToDB from './configs/dbConfig.js';
@@ -8,10 +9,24 @@ import bodyParser from 'body-parser';
 // const bodyParser = require('body-parser');
 
 
+=======
+import express from 'express';
+import connectToDB from './configs/dbConfig.js';
+import eventRoutes from './routes/event.js';
+import userRoutes from './routes/user.js';
+import registrationRoutes from './routes/registration.js';
+>>>>>>> 5215623d10418a3c7d12c8f81d60d7c00b35428a
 
 const app = express();
-connectToDB()
+connectToDB();
+app.use(express.json());
 
+// Routes
+app.use('/events', eventRoutes);
+app.use('/users', userRoutes);
+app.use('/registrations', registrationRoutes);
+
+<<<<<<< HEAD
 //Routes
 // const auth = require('./routes/authroute.js')
 import auth from './routes/authroute.js';
@@ -34,4 +49,8 @@ app.use('/auth', auth)
 
 app.listen(5000, () => {
     console.log('Server started on port 5000');
+=======
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
+>>>>>>> 5215623d10418a3c7d12c8f81d60d7c00b35428a
 });

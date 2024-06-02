@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+
+const { Schema, model } = mongoose;
 
 const registrationSchema = new Schema({
     event_id: {
         type: Object,
         required: true,
-        min: 3,
+        minlength: 3, // Changed from "min" to "minlength"
         unique: true
     },
     event_name: {
@@ -22,4 +23,6 @@ const registrationSchema = new Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Registration', registrationSchema);
+const Registration = model('Registration', registrationSchema);
+
+export default Registration;
