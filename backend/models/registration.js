@@ -9,11 +9,19 @@ const registrationSchema = new Schema({
         minlength: 3, // Changed from "min" to "minlength"
         unique: true
     },
+    username: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
     event_name: {
         type: String,
         required: true
     },
-    location: {
+    place: {
         type: String,
         default: ""
     },
