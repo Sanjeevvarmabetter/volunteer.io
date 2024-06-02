@@ -127,10 +127,13 @@ span a {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #FFEFBA;
+  /* background: #FFEFBA;
   background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
-
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA); */
+  background-image: url('./pages/assests//volunteer.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .centers {
@@ -139,9 +142,13 @@ span a {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: #FFEFBA;
+  background-image: url('./pages/assests//volunteer.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background: #FFEFBA;
   background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
-  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA); */
 }
 
 .form_containers {

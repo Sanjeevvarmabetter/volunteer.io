@@ -35,13 +35,12 @@ const Profile = () => {
         };
         verifyCookie();
     }, [cookies, navigate, removeCookie]);
+
     useEffect(() => {
-        // Function to fetch user data
         const fetchUserData = async () => {
             try {
                 setLoading(true);
                 setError(null);
-                // Make a GET request to fetch user data by username
                 const response = await axios.get(`http://localhost:5000/user/userdetails/${username}`);
                 setUserData(response.data);
                 setLoading(false);
@@ -53,58 +52,40 @@ const Profile = () => {
         };
         fetchUserData();
     }, [username]);
+
     if (loading) {
         return <div>Loading...</div>;
     }
     if (error) {
         return <div>Error: {error}</div>;
     }
-    console.log(userData)
+
     const timestamp = userData.createdAt;
     const date = new Date(timestamp);
+    const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
-    // Extracting hours, minutes, seconds, and milliseconds
-    // const hours = date.getHours();
-    // const minutes = date.getMinutes();
-    // const seconds = date.getSeconds();
-    // const milliseconds = date.getMilliseconds();
-
-    // Formating the date
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1; // Month is zero-based, so adding 1
-    const day = date.getDate();
-    const dat = `${year}-${month}-${day}`;
-    // const tim = `${hours}:${minutes}:${seconds}.${milliseconds}`;
     return (
-        <div className="homeMain h-screen">
-            <NavBar style={{ position: "Sticky" }} />
-            <div className="p-4">
-                <h1 className="text-3xl my-2">Profile</h1>
-                <table>
-                    <tr >
-                        <td className="font-bold">Username </td>
-                        <td className="pl-1">: {userData.username}</td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold">Email </td>
-                        <td className="pl-1">: {userData.email}</td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold">Role </td>
-                        <td className="pl-1">: {userData.role}</td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold">Phone Number </td>
-                        <td className="pl-1">: {userData.phoneNumber}</td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold">Created At </td>
-                        <td className="pl-1">: {dat}</td>
-                    </tr>
-                </table>
+        <div className="bg-gray-100 h-screen">
+            <NavBar />
+            <div className="container mx-auto px-4 py-8">
+                <h1 className="text-3xl font-bold text-center mb-8">User Profile</h1>
+                <div className="bg-white shadow-md rounded-lg p-6 mb-8">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="font-bold">Username:</div>
+                        <div>{userData.username}</div>
+                        <div className="font-bold">Email:</div>
+                        <div>{userData.email}</div>
+                        <div className="font-bold">Role:</div>
+                        <div>{userData.role}</div>
+                        <div className="font-bold">Phone Number:</div>
+                        <div>{userData.phoneNumber}</div>
+                        <div className="font-bold">Created At:</div>
+                        <div>{formattedDate}</div>
+                    </div>
+                </div>
             </div>
+            <Footer />
             <ToastContainer />
-            <Footer style={{ position: "absolute", bottom: '0', left: '0' }} />
         </div>
     );
 };

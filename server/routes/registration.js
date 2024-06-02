@@ -6,14 +6,30 @@ const router = express.Router();
 // Create a Registration
 router.post('/', async (req, res) => {
     try {
-        const registration = new Registration(req.body);
-        await registration.save();
-        res.status(201).send(registration);
+        const { id, event_name, x, place, y, description } = req.body;
+
+        // Check if required fields are present in the request body
+        if (!id || !event_name || !x || !place || !y || !description) {
+            return res.status(400).json({ message: "Missing required fields" });
+        }
+
+        // Create a new registration entry
+        const user = await Registration.create({ 
+            username: y, // Assuming 'y' is the username field
+            email: x, // Assuming 'x' is the email field
+            event_id: id, // Assuming 'id' is the event_id field
+            event_name,
+            place,
+            description
+        });
+
+        res.status(201).json({ message: "User Registered successfully", success: true });
     } catch (error) {
         console.error(error);
-        res.status(400).send(error);
+        res.status(400).json({ message: "Error creating registration", error });
     }
 });
+
 
 // Read Registrations
 router.get('/', async (req, res) => {

@@ -72,7 +72,7 @@ const Login = () => {
 
   return (
     <div className="center">
-      <div className="form_container ">
+      <div className="form_container">
         <h1 className="text-2xl">Login Account</h1>
         <form onSubmit={handleSubmit}>
           <div>

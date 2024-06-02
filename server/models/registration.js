@@ -13,9 +13,17 @@ const registrationSchema = new Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         default: ""
+    },
+    username: {
+        type: String,
+        required: true
     },
     description: {
         type: String,
