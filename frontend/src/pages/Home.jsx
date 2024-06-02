@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,8 +34,10 @@ const Home = () => {
 
   console.log(username)
   return (
-    <div className="bg-[#071e34]">
+    <div className="bg-[#071e34] h-screen">
       <NavBar style={{ position: "Sticky" }} />
+
+      <Footer />
       <ToastContainer />
     </div>
   );
