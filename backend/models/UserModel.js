@@ -1,42 +1,37 @@
-// id 
-// name
-// password
-// email
-// role
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
-// https://github.com/dejwid/ecommerce-front 
-// https://github.com/dejwid/ecommerce-admin/blob/master/models/Order.js 
+const { Schema } = mongoose;
 
-// Getting Started with MongoDB & Mongoose : https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-
-
-const UserSchema = new Schema({
-    username:{
-        type:String,
+const userSchema = new Schema({
+    username: {
+        type: String,
         required: true
     },
-
     password: {
-        type:String,
+        type: String,
         required: true
     },
-
     email: {
-        type:String,
+        type: String,
         required: true
     },
-
     role: {
-        type:String,
+        type: String,
         required: true,
-        enum:['volunteer','organizer']
+        enum: ['volunteer', 'organizer']
     },
+    createdAt: {
+        type: Date,
+        default: new Date(),
+    }
 });
 
-module.exports = mongoose.model('user',UserSchema);
+// Hash password before saving to database
+userSchema.pre('save', async function () {
+    this.password = await bcrypt.hash(this.password, 12);
+});
 
+const User = mongoose.model('User', userSchema);
 
-
+export default User;

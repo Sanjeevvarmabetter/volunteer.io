@@ -1,5 +1,221 @@
-body {
-  margin: 0;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/* Custom styles for the slider dots */
+.slick-dots li button:before {
+  color: white;
+  /* Change the dots color to white */
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
+  /* Ensure the active dot is also white */
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
   padding: 0;
-  font-family: sans-serif;
+  margin: 0;
+}
+
+label {
+  font-size: 1.2rem;
+  color: #656262;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form_container {
+  background-color: #fff;
+  padding: 2rem 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.form_container>h1 {
+  margin-block: 1rem;
+  padding-block: 0.6rem;
+}
+
+.form_container>form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form_container div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form_container input {
+  border: none;
+  padding: 0.5rem;
+  border-bottom: 1px solid gray;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.form_container input::placeholder {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.form_container button {
+  background-color: green;
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+span a {
+  text-decoration: none;
+  color: rgb(80, 0, 253);
+  text-decoration: underline;
+}
+
+.home_page {
+  width: 100vw;
+  background: #000;
+  color: white;
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+.home_page span {
+  /* color: rgba(0, 212, 255, 1); */
+}
+
+.home_page button {
+  background-color: rgb(27, 73, 83);
+  color: #fff;
+  cursor: pointer;
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  border-radius: 2rem;
+  transition: ease-in 0.3s;
+  border: none;
+}
+
+.home_page button:hover {
+  /* background-color: rgba(0, 212, 255, 1); */
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .home_page {
+    font-size: 1.5rem;
+  }
+
+  .home_page button {
+    padding: 0.6rem 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+.center,
+.forgot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #FFEFBA;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+
+}
+
+.centers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #FFEFBA;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.form_containers {
+  background-color: #fff;
+  padding: 1rem 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 540px;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.form_containers>h1 {
+  margin-block: 1rem;
+  padding-block: 0.6rem;
+  /* color: rgba(0, 212, 255, 1); */
+}
+
+.form_containers>form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form_containers div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.form_containers input {
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  border-bottom: 1px solid gray;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.form_containers input::placeholder {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.form_containers button {
+  background-color: green;
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+
+.ChatApp {
+  text-align: center;
+  margin: 20px;
+}
+
+.chat-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 20px;
 }
