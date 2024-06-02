@@ -37,6 +37,7 @@ const Home = () => {
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
+  
   useEffect(() => {
     // Function to fetch user data
     const fetchUserData = async () => {

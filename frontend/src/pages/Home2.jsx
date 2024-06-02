@@ -1,62 +1,107 @@
-import React from 'react';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+
+import NavBar from './components/NavBar';
+import Footer from "./components/Footer";
+import VolunteerCampaigns from "./components/VolunteerCampaigns";
 
 function Dash() {
+  const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [category, setCategory] = useState('');
+  const [place, setPlace] = useState('');
+
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        navigate("/login");
+      }
+      const { data } = await axios.post(
+        "http://localhost:5000",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
+      setUsername(user);
+      return status
+        ? toast(`Hello ${user}`, {
+          position: "top-right",
+        })
+        : (removeCookie("token"), navigate("/login"));
+    };
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await axios.get(`http://localhost:5000/user/userdetails/${username}`);
+        setUserData(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Error fetching user data');
+        setLoading(false);
+        console.log(error)
+      }
+    };
+    fetchUserData();
+  }, [username]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
+  const handlePlaceChange = (e) => {
+    setPlace(e.target.value);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
-      <div className="bg-green-600 py-4">
-        <div className="container mx-auto flex items-center justify-between px-4">
-          <div className="flex items-center space-x-4">
-            <img src="/mnt/data/image.png" alt="Voluntrove Logo" className="h-10" />
-            <img src="/mnt/data/image.png" alt="G2 Logo" className="h-5" />
-            <img src="/mnt/data/image.png" alt="Tech Radar Logo" className="h-5" />
-            <img src="/mnt/data/image.png" alt="Product Hunt Logo" className="h-5" />
-          </div>
-          <div className="flex items-center space-x-6">
-            <a href="#" className="text-white">Home</a>
-            <a href="#" className="text-white">Support</a>
-            <button className="border border-white text-white hover:border-gray-200 hover:text-gray-200 px-4 py-1">LOGOUT</button>
-          </div>
-        </div>
-      </div>
+      <NavBar />
       <div className="container mx-auto mt-10 px-4">
+        <h1 className="text-3xl text-green-600 mb-4 uppercase">WELCOME {userData.role}.</h1>
         <div className="flex items-center justify-between">
           <div className="flex space-x-2">
-            <select className="border border-gray-300 p-2 rounded">
-              <option>Category</option>
+            <select className="border border-gray-300 p-2 rounded" onChange={handleCategoryChange}>
+              <option value="">Category</option>
+              <option value="Environment">Environment</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Community">Community</option>
+              <option value="Animal Welfare">Animal Welfare</option>
+              <option value="Sports">Sports</option>
+              <option value="Arts & Culture">Arts & Culture</option>
             </select>
-            <select className="border border-gray-300 p-2 rounded">
-              <option>Place</option>
+            <select className="border border-gray-300 p-2 rounded" onChange={handlePlaceChange}>
+              <option value="">Place</option>
+              <option value="California">California</option>
+              <option value="Texas">Texas</option>
+              <option value="New York">New York</option>
+              <option value="Florida">Florida</option>
+              <option value="Illinois">Illinois</option>
             </select>
-            <select className="border border-gray-300 p-2 rounded">
-              <option>Month</option>
-            </select>
-          </div>
-          <div className="flex items-center space-x-4">
-            <h1 className="text-3xl text-green-600">WELCOME VOLUNTEER.</h1>
-            <HeartIcon className="w-6 h-6 text-pink-500" />
-            <BellIcon className="w-6 h-6 text-yellow-500" />
-            <img src="/mnt/data/image.png" alt="User Avatar" className="h-10 w-10 rounded-full" />
           </div>
         </div>
       </div>
       <div className="container mx-auto mt-6 px-4">
         <h2 className="text-2xl text-green-600 mb-4">Awareness campaign</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-pink-500 text-white p-4 rounded">
-            <img src="/mnt/data/image.png" alt="Campaign Image" className="w-full h-32 object-cover rounded-lg" />
-            <h3 className="text-lg font-semibold mt-2">It's OK to not feel OK.</h3>
-            <p className="text-sm">
-              Join us for a mental health awareness campaign and be a part of change. Together, let's create a safe space for everyone to speak up and reach out.
-            </p>
-          </div>
-          <div className="bg-yellow-500 text-white p-4 rounded">
-            <img src="/mnt/data/image.png" alt="Campaign Image" className="w-full h-32 object-cover rounded-lg" />
-            <h3 className="text-lg font-semibold mt-2">Stand with the planet.</h3>
-            <p className="text-sm">
-              Take an active role in our environmental conservation campaigns. Your small steps can lead to a significant impact. Together, let's make our Earth a better place!
-            </p>
-          </div>
-        </div>
+        <VolunteerCampaigns category={category} place={place} />
       </div>
       <div className="container mx-auto mt-6 px-4">
         <div className="bg-white p-6 rounded shadow">
@@ -68,26 +113,8 @@ function Dash() {
           <p>Explore the opportunities and make a difference through volunteering.</p>
         </div>
       </div>
+      <Footer />
     </div>
-  );
-}
-
-function HeartIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-    </svg>
   );
 }
 
